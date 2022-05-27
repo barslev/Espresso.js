@@ -47,10 +47,9 @@ if (cfg.mongo_isEnabled == true) {
   mongoose.Promise = global.Promise;
   mongoose
     .connect(url, {
-      useUnifiedTopology: true,
-      useNewUrlParser: true,
-      promiseLibrary: require("bluebird"),
-    })
+    promiseLibrary: require("bluebird"),
+    maxPoolSize: 5
+  })
     .then(() => console.log(":: DB Connection succesful ::"))
     .catch((err) => console.error(err));
 }
